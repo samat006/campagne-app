@@ -1,14 +1,17 @@
-// backend/server.js
 const express = require('express');
+const cors = require('cors');  // Importer cors
 const { Pool } = require('pg');
 const app = express();
 const port = 3000;
 
+// Utiliser cors pour autoriser les requêtes provenant d'autres origines (ici localhost:8080)
+app.use(cors());  // Activer CORS pour toutes les requêtes
+
 const pool = new Pool({
-  user: 'user',
+  user: 'seck',
   host: 'db',
-  database: 'campagne',
-  password: 'pass',
+  database: 'campagne_db',
+  password: '3004',
   port: 5432,
 });
 
