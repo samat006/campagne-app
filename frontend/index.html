@@ -1,0 +1,28 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Campagnes</title>
+</head>
+<body>
+  <h1>Liste des campagnes</h1>
+  <ul id="campagnes-list"></ul>
+
+  <script>
+    fetch('http://localhost:3000/api/campagnes')
+      .then(response => response.json())
+      .then(data => {
+        const ul = document.getElementById('campagnes-list');
+        data.forEach(campagne => {
+          const li = document.createElement('li');
+          li.textContent = `${campagne.nom} – ${campagne.description}`;
+          ul.appendChild(li);
+        });
+      })
+      .catch(err => {
+        console.error('Erreur :', err);
+      });
+  </script>
+</body>
+</html>
